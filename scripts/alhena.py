@@ -1,7 +1,7 @@
 import sys; sys.path.insert(0,'.')
 import numpy as np, cv2, proc
 U='/mnt/user-data/uploads/DWARF_RAW_WIDE_Alhena_EXP_10_GAIN_60_2026-10-22-04-04-12-073/OHN_meteor_scan/'
-st=np.load(U+'alhena_stack2.npy'); cnt=np.load(U+'alhena_count2.npy').astype(np.float32).min(2)
+st=np.load(U+__import__('os').environ.get('STK','alhena_stack2.npy')); cnt=np.load(U+'alhena_count2.npy').astype(np.float32).min(2)
 print('count max',cnt.max())
 valid=((cnt>=float(__import__("os").environ.get("CT","0.45"))*cnt.max())&np.isfinite(st).all(2)).astype(np.uint8)
 valid=cv2.erode(valid,np.ones((9,9),np.uint8))

@@ -34,3 +34,7 @@ Sun (10/20 12:11, 774 of 6,450 frames), three shorts with covers, watermark chec
 - TikTok captions: no links, ≤150 chars + 3–5 hashtags. Shorts titles ≤70 chars; description line 1 ends
   "Watch live 24/7: youtube.com/@ohhailnah/live". Don't state unverified facts (e.g. sunspot region numbers).
 - SHO/Hubble palettes are not appropriate for this broadband/duo-band data.
+
+## Oct 23 update
+- Re-stacked Alhena with the WIDE camera factory flat (`CALI_FRAME/flat/cam_1`, corners ~0.33 of centre) -> `work/alhena/alhena_stack3_flat.npy`; finals rebuilt from it (`STK=alhena_stack3_flat.npy CT=0.25 python3 alhena.py 140 70`).
+- Bias for cam_1 is 240 ADU (matches BLACK=240).
