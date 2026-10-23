@@ -37,7 +37,7 @@ for n,ra,de,(dx,dy) in objs:
     r=16;
     for a in range(0,360,30): d.arc([x-r,y-r,x+r,y+r],a,a+18,fill=(255,214,140,200),width=2)
     d.text((x+dx+r,y+dy),n,font=MF(17,'Medium'),fill=(255,226,170,220))
-cons=[('GEMINI',105.0,24.5),('ORION',85.0,4.6),('CANIS MINOR',113.4,7.6),('TAURUS',84.0,25.8),('MONOCEROS',104.6,4.0)]
+cons=[('GEMINI',105.0,24.5),('ORION',86.6,11.6),('CANIS MINOR',112.0,13.0),('TAURUS',84.0,25.8),('MONOCEROS',104.0,6.6)]
 for n,ra,de in cons:
     x,y=pix(ra,de)
     if not inside(x,y,60): continue

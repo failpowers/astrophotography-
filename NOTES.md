@@ -16,7 +16,10 @@ Sun (10/20 12:11, 774 of 6,450 frames), three shorts with covers, watermark chec
 - Final unsigned image: `masters/alh_v6.png` (1780x996), made by
   `python3 alh_fin2.py alh_v6.png bgt=0.07 k=70 ssat=1.2 glow=0.8 gsig=4 gthr=0.5 ringw=0.65 dsat=0.5`.
 
-## Next steps
+## Done Oct 23
+- Alhena_Gemini_Orion_OHN.jpg, Alhena_Orionid_Radiant_Labeled_OHN.jpg, OHN_Astro_Short_Orionid_Hunt.mp4 (+ cover) in outputs/.
+
+## Next steps (1–3 done Oct 23)
 1. `python3 annotate.py alh_v6.png alh_annot.png` (labels + Orionid radiant at RA 95, Dec +16), check it.
 2. Sign both: `SIGDY=58 python3 sign.py alh_v6.png Alhena_Gemini_Orion_OHN.jpg "10.22.26  ·  03:41–05:33" 0.95 "Alhena · Gemini & Orion"`
    (SIGDY lifts the signature so the stamp clears Procyon). Same for the annotated version. Verify with `ohn_watermark_check.py`.

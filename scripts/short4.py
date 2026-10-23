@@ -72,7 +72,7 @@ def ring(cx,cy,rx,ry,txt):
     return shadowed(L)
 HDR=header()
 P=dict(hook=panel('ORIONID HUNT FROM HOUSTON','Camera aimed at the radiant','Did we catch a meteor?',tsize=104),
-       tl=panel('2 HOURS · 10-SECOND FRAMES','Gemini & Orion rising high','03:41 to 05:35 AM, Oct 22',tsize=96),
+       tl=panel('2 HOURS · 10-SECOND FRAMES','Aimed at Gemini & Orion','03:41 to 05:35 AM, Oct 22',tsize=96),
        sat=panel('WAIT… IS THAT ONE?','Nope: a satellite','It keeps moving across several frames',tsize=120,c2=AMBER),
        clouds=panel('THEN THE CLOUDS ROLLED IN','Meteors caught: 0','Satellites & planes: 4',tsize=96,c2=AMBER),
        stack=panel('389 FRAMES STACKED','Gemini, Orion & the radiant','The Orionids appear to fly out from the circle',tsize=118))
@@ -108,7 +108,7 @@ def base(name,t):
     if name=='end': c[:]=BGc*0.9; return c
     if name in('hook','tl','sat','clouds'): win=tl_win(tl_index(t))
     else:
-        u=(t-15.5)/9.5; win=window(annot,(700,520),1000,(1150,600),880,u)
+        u=(t-15.5)/9.5; win=window(annot,(880,560),780,(1083,575),600,u)
     reg=c[WIN_Y0:WIN_Y0+WIN_H]; c[WIN_Y0:WIN_Y0+WIN_H]=reg*(1-FM)+win.astype(np.float32)*FM
     return c
 def texts(name,t):
