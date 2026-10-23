@@ -10,18 +10,20 @@ def ease(t): t=np.clip(t,0,1); return t*t*(3-2*t)
 # ---------- sources
 U='/mnt/user-data/uploads/DWARF_RAW_WIDE_Alhena_EXP_10_GAIN_60_2026-10-22-04-04-12-073/OHN_meteor_scan/'
 times=json.load(open(U+'alhena_timelapse_times.json'))
-TLX0=264; TLW=912
-cap=cv2.VideoCapture('met/timelapse.mp4'); TL=[]
+TLX0=290; TLW=860; TLY0=23; TLH=764
+cap=cv2.VideoCapture('met/timelapse_stab.mp4'); TL=[]
 while True:
     ok,fr=cap.read()
     if not ok: break
-    TL.append(fr[:,TLX0:TLX0+TLW].copy())
+    TL.append(fr[TLY0:TLY0+TLH,TLX0:TLX0+TLW].copy())
 TL=np.stack(TL); NT=len(TL); print('timelapse frames',NT)
 annot=cv2.imread('alh_annot.png'); final=cv2.imread('alh_v6.png')
 SAT=int(sys.argv[2]) if len(sys.argv)>2 else 502
 SATC=json.load(open('sat_box.json')) if False else None
 def tl_win(idx):
-    fr=TL[int(np.clip(idx,0,NT-1))]
+    # motion-blend the ~2 source frames each output frame spans: smooths cloud flicker
+    idx=float(np.clip(idx,0,NT-1)); a=int(idx); b=min(a+2,NT-1)
+    fr=np.mean(np.stack([TL[k] for k in range(a,b+1)]).astype(np.float32),0).astype(np.uint8) if (b>a and a!=SAT) else TL[a]
     return cv2.resize(fr,(W,WIN_H),interpolation=cv2.INTER_LINEAR)   # 912x810 -> 1080x960 (same aspect)
 def window(img,c0,h0,c1,h1,t):
     e=ease(t); cx=c0[0]+(c1[0]-c0[0])*e; cy=c0[1]+(c1[1]-c0[1])*e; hh=h0+(h1-h0)*e; s=WIN_H/hh

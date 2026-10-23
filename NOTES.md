@@ -38,3 +38,6 @@ Sun (10/20 12:11, 774 of 6,450 frames), three shorts with covers, watermark chec
 ## Oct 23 update
 - Re-stacked Alhena with the WIDE camera factory flat (`CALI_FRAME/flat/cam_1`, corners ~0.33 of centre) -> `work/alhena/alhena_stack3_flat.npy`; finals rebuilt from it (`STK=alhena_stack3_flat.npy CT=0.25 python3 alhena.py 140 70`).
 - Bias for cam_1 is 240 ADU (matches BLACK=240).
+
+## Oct 23 — stabilized short
+- Time-lapse jumps (DWARF re-centres every ~6 frames) removed: stab4.py (2 passes, star matching per step, cancel jumps) -> tl_C.npy, tl_C2.npy; stab5.py 15 high-pass keeps frame filled; short4 crops 860x764 at (290,23) from timelapse_stab.mp4 and blends 2-3 source frames per output frame. Frame-to-frame shake 95th pct 27 px -> 0.9 px.
